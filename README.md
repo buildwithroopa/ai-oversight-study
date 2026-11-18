@@ -18,10 +18,9 @@ A separate small comparison used four frozen candidates, each reviewed once with
 
 ## How to reproduce the offline checks
 
-Requires Node.js 20 or newer. From the project root:
+Requires Node.js 20 or newer. From the project root, run:
 
 ```sh
-npm ci
 npm test
 ```
 
