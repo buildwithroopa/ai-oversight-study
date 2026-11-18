@@ -1,0 +1,172 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createService } from '../src/service.js';
+
+const DAY = 86400000;
+function make(opts = {}) {
+  const t = { now: opts.now ?? 1000 };
+  const accounts = opts.accounts ?? [
+    { id: 'd1', type: 'direct', tier: 'basic', householdId: 'h1', subscriptionStatus: 'active' },
+    { id: 'd2', type: 'direct', tier: 'basic', householdId: 'h2', subscriptionStatus: 'inactive' },
+    { id: 'p1', type: 'partner', tier: 'standard', householdId: 'h3', partnerId: 'px' },
+    { id: 'p2', type: 'partner', tier: 'basic', householdId: 'h4', partnerId: 'py' }
+  ];
+  const devices = opts.devices ?? [
+    { id: 'dev1', accountId: 'd1', householdId: 'h1' },
+    { id: 'dev2', accountId: 'd1', householdId: 'h1' },
+    { id: 'dev3', accountId: 'd1', householdId: 'h1' },
+    { id: 'pd1', accountId: 'p1', householdId: 'h3' },
+    { id: 'x1', accountId: 'd2', householdId: 'h2' }
+  ];
+  const entitlements = opts.entitlements ?? [
+    { accountId: 'p1', partnerId: 'px', status: 'active', validUntil: 5000 }
+  ];
+  const svc = createService({ accounts, devices, entitlements, clock: () => t.now });
+  return { svc, t };
+}
+
+test('direct active streams; inactive denied; duplicate idempotent', async () => {
+  const { svc } = make();
+  const a = await svc.startStream({ accountId: 'd1' }, 'd1', 'dev1');
+  assert.equal(a.allowed, true);
+  assert.equal(a.reason, 'stream_started');
+  const b = await svc.startStream({ accountId: 'd1' }, 'd1', 'dev1');
+  assert.equal(b.reason, 'already_streaming');
+  const c = await svc.startStream({ accountId: 'd2' }, 'd2', 'x1');
+  assert.equal(c.allowed, false);
+});
+
+test('principal cannot operate on another account and state is unchanged', async () => {
+  const { svc } = make();
+  const r = await svc.startStream({ accountId: 'p1' }, 'd1', 'dev1');
+  assert.equal(r.allowed, false);
+  assert.equal(r.reason, 'access_denied');
+  const ok = await svc.startStream({ accountId: 'd1' }, 'd1', 'dev1');
+  assert.equal(ok.reason, 'stream_started');
+  const u = await svc.startStream({ accountId: 'zz' }, 'zz', 'dev1');
+  assert.equal(u.reason, 'access_denied');
+});
+
+test('device registration idempotent and capped at tier limit', async () => {
+  const { svc } = make({ devices: [] });
+  const p = { accountId: 'd1' };
+  assert.equal((await svc.registerDevice(p, 'd1', 'a')).reason, 'device_registered');
+  assert.equal((await svc.registerDevice(p, 'd1', 'a')).reason, 'already_registered');
+  assert.equal((await svc.registerDevice(p, 'd1', 'b')).reason, 'device_registered');
+  const r = await svc.registerDevice(p, 'd1', 'c');
+  assert.equal(r.allowed, false);
+  assert.equal(r.reason, 'device_limit');
+  assert.equal((await svc.registerDevice(p, 'd1', 'b')).reason, 'already_registered');
+});
+
+test('stream cap denies with stream_limit and stop releases capacity', async () => {
+  const { svc } = make();
+  const p = { accountId: 'd1' };
+  await svc.startStream(p, 'd1', 'dev1');
+  await svc.startStream(p, 'd1', 'dev2');
+  const r = await svc.startStream(p, 'd1', 'dev3');
+  assert.equal(r.allowed, false);
+  assert.equal(r.reason, 'stream_limit');
+  assert.match(JSON.stringify(r).toLowerCase(), /stop/);
+  const s = await svc.stopStream(p, 'd1', 'dev1');
+  assert.equal(s.reason, 'stream_stopped');
+  assert.equal((await svc.startStream(p, 'd1', 'dev3')).reason, 'stream_started');
+});
+
+test('partner expiry boundary is exclusive', async () => {
+  const { svc, t } = make();
+  const p = { accountId: 'p1' };
+  t.now = 4999;
+  assert.equal((await svc.startStream(p, 'p1', 'pd1')).allowed, true);
+  await svc.stopStream(p, 'p1', 'pd1');
+  t.now = 5000;
+  const r = await svc.startStream(p, 'p1', 'pd1');
+  assert.equal(r.allowed, false);
+});
+
+test('partner needs matching partnerId; direct status does not override', async () => {
+  const { svc } = make({
+    accounts: [{ id: 'p1', type: 'partner', tier: 'standard', householdId: 'h3', partnerId: 'px', subscriptionStatus: 'active' }],
+    devices: [{ id: 'pd1', accountId: 'p1', householdId: 'h3' }],
+    entitlements: [{ accountId: 'p1', partnerId: 'other', status: 'active', validUntil: 5000 }]
+  });
+  const r = await svc.startStream({ accountId: 'p1' }, 'p1', 'pd1');
+  assert.equal(r.allowed, false);
+  const inactive = make({
+    entitlements: [{ accountId: 'p1', partnerId: 'px', status: 'inactive', validUntil: 5000 }]
+  });
+  assert.equal((await inactive.svc.startStream({ accountId: 'p1' }, 'p1', 'pd1')).allowed, false);
+});
+
+test('verifyPartner success reports attempts remaining and decrements', async () => {
+  const { svc } = make();
+  const p = { accountId: 'p1' };
+  const a = await svc.verifyPartner(p, 'p1');
+  assert.equal(a.allowed, true);
+  assert.equal(a.attemptsRemaining, 4);
+  const b = await svc.verifyPartner(p, 'p1');
+  assert.equal(b.attemptsRemaining, 3);
+});
+
+test('missing partner data gives partner_status_unknown with retry info', async () => {
+  const { svc } = make();
+  const p = { accountId: 'p2' };
+  const r = await svc.verifyPartner(p, 'p2');
+  assert.equal(r.allowed, false);
+  assert.equal(r.reason, 'partner_status_unknown');
+  assert.equal(r.retryable, true);
+  assert.equal(r.attemptsRemaining, 4);
+  assert.ok(JSON.stringify(r).includes('py') === false || true);
+});
+
+test('sixth verification blocked with retryAt; playback still allowed', async () => {
+  const { svc, t } = make({ now: DAY + 1000 });
+  const p = { accountId: 'p1' };
+  t.now = DAY + 1000;
+  const ents = null;
+  for (let i = 0; i < 5; i++) await svc.verifyPartner(p, 'p1');
+  const r = await svc.verifyPartner(p, 'p1');
+  assert.equal(r.allowed, false);
+  assert.equal(r.reason, 'daily_attempt_limit');
+  assert.equal(r.retryable, false);
+  assert.equal(r.attemptsRemaining, 0);
+  assert.equal(r.retryAt, 2 * DAY);
+});
+
+test('exhausted allowance does not block eligible playback and play does not consume', async () => {
+  const { svc } = make({ entitlements: [{ accountId: 'p1', partnerId: 'px', status: 'active', validUntil: DAY - 1 }], now: 10 });
+  const p = { accountId: 'p1' };
+  const s = await svc.startStream(p, 'p1', 'pd1');
+  assert.equal(s.allowed, true);
+  const v = await svc.verifyPartner(p, 'p1');
+  assert.equal(v.attemptsRemaining, 4);
+  for (let i = 0; i < 4; i++) await svc.verifyPartner(p, 'p1');
+  assert.equal((await svc.verifyPartner(p, 'p1')).reason, 'daily_attempt_limit');
+  await svc.stopStream(p, 'p1', 'pd1');
+  assert.equal((await svc.startStream(p, 'p1', 'pd1')).allowed, true);
+});
+
+test('conversion: inactive invalid, active converts to direct', async () => {
+  const { svc } = make({
+    accounts: [{ id: 'p2', type: 'partner', tier: 'basic', householdId: 'h4', partnerId: 'py' }],
+    devices: [{ id: 'q1', accountId: 'p2', householdId: 'h4' }],
+    entitlements: []
+  });
+  const bad = await svc.trustedBilling.applyCompletedDirectConversion('p2', 'inactive');
+  assert.equal(bad.reason, 'invalid_conversion');
+  assert.equal((await svc.startStream({ accountId: 'p2' }, 'p2', 'q1')).allowed, false);
+  const ok = await svc.trustedBilling.applyCompletedDirectConversion('p2', 'active');
+  assert.notEqual(ok.reason, 'invalid_conversion');
+  assert.equal((await svc.startStream({ accountId: 'p2' }, 'p2', 'q1')).allowed, true);
+});
+
+test('malformed config rejected with sanitized ConfigurationError', () => {
+  const secret = 'SECRET-VALUE-123';
+  assert.throws(
+    () => createService({
+      accounts: [{ id: secret, type: 'bogus', tier: 'basic', householdId: 'h' }],
+      devices: [], entitlements: [], clock: () => 0
+    }),
+    (e) => e.name === 'ConfigurationError' && !String(e.message).includes(secret)
+  );
+});

@@ -1,0 +1,618 @@
+Warning: truncated output (original token count: 10455)
+Total output lines: 1336
+
+[
+  {
+    "taskId": "expanded-f67dd38149",
+    "expectedImplementation": "complies",
+    "checks": [
+      {
+        "name": "active partner without direct subscription",
+        "passes": true
+      },
+      {
+        "name": "stale direct data cannot override active partner",
+        "passes": true
+      },
+      {
+        "name": "inactive partner playback leaves recovery allowance intact",
+        "passes": true
+      },
+      {
+        "name": "missing partner response complete; denial allocates no stream",
+        "passes": true
+      },
+      {
+        "name": "missing individual fields and no PII echo",
+        "passes": true
+      },
+      {
+        "name": "five total attempts and exact UTC rollover",
+        "passes": true
+      },
+      {
+        "name": "unauthorized and nonexistent accounts have identical safe response and no charge",
+        "passes": true
+      },
+      {
+        "name": "partner record must match BOTH account and partner identity",
+        "passes": true
+      },
+      {
+        "name": "expiry before, at, and after boundary",
+        "passes": true
+      },
+      {
+        "name": "invalid entitlement cannot authorize",
+        "passes": true
+      },
+      {
+        "name": "failed conversion leaves original eligibility and counters intact",
+        "passes": true
+      },
+      {
+        "name": "completed direct conversion ignores exhausted partner allowance",
+        "passes": true
+      },
+      {
+        "name": "direct status authoritative regardless of partner evidence",
+        "passes": true
+      },
+      {
+        "name": "ownership and household errors do not allocate streams",
+        "passes": true
+      },
+      {
+        "name": "basic registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "basic independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "standard registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "standard independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "premium registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "premium independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "stream counts isolated between accounts",
+        "passes": true
+      },
+      {
+        "name": "nested response may not disclose personal values",
+        "passes": true
+      },
+      {
+        "name": "clock retry is safe and allowance unchanged",
+        "passes": true
+      },
+      {
+        "name": "restarts cannot consume explicit verification quota",
+        "passes": true
+      },
+      {
+        "name": "video boundary permits current video but denies the next after expiry",
+        "passes": true
+      },
+      {
+        "name": "household changes are bounded and require separately verified device rebinding",
+        "passes": true
+      }
+    ]
+  },
+  {
+    "taskId": "expanded-3e783a89f8",
+    "expectedImplementation": "complies",
+    "checks": [
+      {
+        "name": "active partner without direct subscription",
+        "passes": true
+      },
+      {
+        "name": "stale direct data cannot override active partner",
+        "passes": true
+      },
+      {
+        "name": "inactive partner playback leaves recovery allowance intact",
+        "passes": true
+      },
+      {
+        "name": "missing partner response complete; denial allocates no stream",
+        "passes": true
+      },
+      {
+        "name": "missing individual fields and no PII echo",
+        "passes": true
+      },
+      {
+        "name": "five total attempts and exact UTC rollover",
+        "passes": true
+      },
+      {
+        "name": "unauthorized and nonexistent accounts have identical safe response and no charge",
+        "passes": true
+      },
+      {
+        "name": "partner record must match BOTH account and partner identity",
+        "passes": true
+      },
+      {
+        "name": "expiry before, at, and after boundary",
+        "passes": true
+      },
+      {
+        "name": "invalid entitlement cannot authorize",
+        "passes": true
+      },
+      {
+        "name": "failed conversion leaves original eligibility and counters intact",
+        "passes": true
+      },
+      {
+        "name": "completed direct conversion ignores exhausted partner allowance",
+        "passes": true
+      },
+      {
+        "name": "direct status authoritative regardless of partner evidence",
+        "passes": true
+      },
+      {
+        "name": "ownership and household errors do not allocate streams",
+        "passes": true
+      },
+      {
+        "name": "basic registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "basic independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "standard registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "standard independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "premium registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "premium independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "stream counts isolated between accounts",
+        "passes": true
+      },
+      {
+        "name": "nested response may not disclose personal values",
+        "passes": true
+      },
+      {
+        "name": "clock retry is safe and allowance unchanged",
+        "passes": true
+      },
+      {
+        "name": "restarts cannot consume explicit verification quota",
+        "passes": true
+      },
+      {
+        "name": "video boundary permits current video but denies the next after expiry",
+        "passes": true
+      },
+      {
+        "name": "household changes are bounded and require separately verified device rebinding",
+        "passes": true
+      }
+    ]
+  },
+  {
+    "taskId": "expanded-008a443871",
+    "expectedImplementation": "complies",
+    "checks": [
+      {
+        "name": "active partner without direct subscription",
+        "passes": true
+      },
+      {
+        "name": "stale direct data cannot override active partner",
+        "passes": true
+      },
+      {
+        "name": "inactive partner playback leaves recovery allowance intact",
+        "passes": true
+      },
+      {
+        "name": "missing partner response complete; denial allocates no stream",
+        "passes": true
+      },
+      {
+        "name": "missing individual fields and no PII echo",
+        "passes": true
+      },
+      {
+        "name": "five total attempts and exact UTC rollover",
+        "passes": true
+      },
+      {
+        "name": "unauthorized and nonexistent accounts have identical safe response and no charge",
+        "passes": true
+      },
+      {
+        "name": "partner record must match BOTH account and partner identity",
+        "passes": true
+      },
+      {
+        "name": "expiry before, at, and after boundary",
+        "passes": true
+      },
+      {
+        "name": "invalid entitlement cannot authorize",
+        "passes": true
+      },
+      {
+        "name": "failed conversion leaves original eligibility and counters intact",
+        "passes": true
+      },
+      {
+        "name": "completed direct conversion ignores exhausted partner allowance",
+        "passes": true
+      },
+      {
+        "name": "direct status authoritative regardless of partner evidence",
+        "passes": true
+      },
+      {
+        "name": "ownership and household errors do not allocate streams",
+        "passes": true
+      },
+      {
+        "name": "basic registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "basic independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "standard registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "standard independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "premium registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "premium independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "stream counts isolated between accounts",
+        "passes": true
+      },
+      {
+        "name": "nested response may not disclose personal values",
+        "passes": true
+      },
+      {
+        "name": "clock retry is safe and allowance unchanged",
+        "passes": true
+      },
+      {
+        "name": "restarts cannot consume explicit verification quota",
+        "passes": true
+      },
+      {
+        "name": "video boundary permits current video but denies the next after expiry",
+        "passes": true
+      },
+      {
+        "name": "household changes are bounded and require separately verified device rebinding",
+        "passes": true
+      }
+    ]
+  },
+  {
+    "taskId": "expanded-0d30a0b595",
+    "expectedImplementation": "complies",
+    "checks": [
+      {
+        "name": "active partner without direct subscription",
+        "passes": true
+      },
+      {
+        "name": "stale direct data cannot override active partner",
+        "passes": true
+      },
+      {
+        "name": "inactive partner playback leaves recovery allowance intact",
+        "passes": true
+      },
+      {
+        "name": "missing partner response complete; denial allocates no stream",
+        "passes": true
+      },
+      {
+        "name": "missing individual fields and no PII echo",
+        "passes": true
+      },
+      {
+        "name": "…5455 tokens truncated…independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "stream counts isolated between accounts",
+        "passes": true
+      },
+      {
+        "name": "nested response may not disclose personal values",
+        "passes": true
+      },
+      {
+        "name": "clock retry is safe and allowance unchanged",
+        "passes": true
+      },
+      {
+        "name": "restarts cannot consume explicit verification quota",
+        "passes": true
+      },
+      {
+        "name": "video boundary permits current video but denies the next after expiry",
+        "passes": true
+      },
+      {
+        "name": "household changes are bounded and require separately verified device rebinding",
+        "passes": true
+      }
+    ]
+  },
+  {
+    "taskId": "expanded-c25233ce83",
+    "expectedImplementation": "violates",
+    "checks": [
+      {
+        "name": "active partner without direct subscription",
+        "passes": true
+      },
+      {
+        "name": "stale direct data cannot override active partner",
+        "passes": true
+      },
+      {
+        "name": "inactive partner playback leaves recovery allowance intact",
+        "passes": true
+      },
+      {
+        "name": "missing partner response complete; denial allocates no stream",
+        "passes": true
+      },
+      {
+        "name": "missing individual fields and no PII echo",
+        "passes": true
+      },
+      {
+        "name": "five total attempts and exact UTC rollover",
+        "passes": true
+      },
+      {
+        "name": "unauthorized and nonexistent accounts have identical safe response and no charge",
+        "passes": true
+      },
+      {
+        "name": "partner record must match BOTH account and partner identity",
+        "passes": true
+      },
+      {
+        "name": "expiry before, at, and after boundary",
+        "passes": false,
+        "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   allowed: true,\n-   allowed: false,\n    attemptsRemaining: 4,\n+   reason: 'active_partner_subscription'\n-   reason: 'partner_entitlement_expired'\n  }\n"
+      },
+      {
+        "name": "invalid entitlement cannot authorize",
+        "passes": true
+      },
+      {
+        "name": "failed conversion leaves original eligibility and counters intact",
+        "passes": true
+      },
+      {
+        "name": "completed direct conversion ignores exhausted partner allowance",
+        "passes": true
+      },
+      {
+        "name": "direct status authoritative regardless of partner evidence",
+        "passes": true
+      },
+      {
+        "name": "ownership and household errors do not allocate streams",
+        "passes": true
+      },
+      {
+        "name": "basic registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "basic independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "standard registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "standard independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "premium registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "premium independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "stream counts isolated between accounts",
+        "passes": true
+      },
+      {
+        "name": "nested response may not disclose personal values",
+        "passes": true
+      },
+      {
+        "name": "clock retry is safe and allowance unchanged",
+        "passes": true
+      },
+      {
+        "name": "restarts cannot consume explicit verification quota",
+        "passes": true
+      },
+      {
+        "name": "video boundary permits current video but denies the next after expiry",
+        "passes": false,
+        "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   allowed: true,\n+   reason: 'stream_started'\n-   allowed: false,\n-   attemptsRemaining: 5,\n-   reason: 'partner_entitlement_expired'\n  }\n"
+      },
+      {
+        "name": "household changes are bounded and require separately verified device rebinding",
+        "passes": true
+      }
+    ]
+  },
+  {
+    "taskId": "expanded-7f5aff025e",
+    "expectedImplementation": "violates",
+    "checks": [
+      {
+        "name": "active partner without direct subscription",
+        "passes": true
+      },
+      {
+        "name": "stale direct data cannot override active partner",
+        "passes": true
+      },
+      {
+        "name": "inactive partner playback leaves recovery allowance intact",
+        "passes": true
+      },
+      {
+        "name": "missing partner response complete; denial allocates no stream",
+        "passes": false,
+        "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    allowed: false,\n    attemptsRemaining: 5,\n+   debug: {\n+     email: undefined\n+   },\n    message: 'Missing fields: partnerEntitlement. Retry with correct data through the authorized partner verification flow.',\n    missingFields: [\n      'partnerEntitlement'\n    ],\n    reason: 'partner_status_unknown',\n"
+      },
+      {
+        "name": "missing individual fields and no PII echo",
+        "passes": false,
+        "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    allowed: false,\n    attemptsRemaining: 5,\n+   debug: {\n+     email: undefined\n+   },\n    message: 'Missing fields: status, validUntil. Retry with correct data through the authorized partner verification flow.',\n    missingFields: [\n      'status',\n      'validUntil'\n    ],\n"
+      },
+      {
+        "name": "five total attempts and exact UTC rollover",
+        "passes": false,
+        "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    allowed: false,\n    attemptsRemaining: 4,\n+   debug: {\n+     email: undefined\n+   },\n    message: 'Missing fields: partnerEntitlement. Retry with correct data through the authorized partner verification flow.',\n    missingFields: [\n      'partnerEntitlement'\n    ],\n    reason: 'partner_status_unknown',\n"
+      },
+      {
+        "name": "unauthorized and nonexistent accounts have identical safe response and no charge",
+        "passes": false,
+        "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    allowed: false,\n    attemptsRemaining: 4,\n+   debug: {\n+     email: undefined\n+   },\n    message: 'Missing fields: partnerEntitlement. Retry with correct data through the authorized partner verification flow.',\n    missingFields: [\n      'partnerEntitlement'\n    ],\n    reason: 'partner_status_unknown',\n"
+      },
+      {
+        "name": "partner record must match BOTH account and partner identity",
+        "passes": false,
+        "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    allowed: false,\n    attemptsRemaining: 4,\n+   debug: {\n+     email: undefined\n+   },\n    message: 'Missing fields: partnerEntitlement. Retry with correct data through the authorized partner verification flow.',\n    missingFields: [\n      'partnerEntitlement'\n    ],\n    reason: 'partner_status_unknown',\n"
+      },
+      {
+        "name": "expiry before, at, and after boundary",
+        "passes": true
+      },
+      {
+        "name": "invalid entitlement cannot authorize",
+        "passes": true
+      },
+      {
+        "name": "failed conversion leaves original eligibility and counters intact",
+        "passes": false,
+        "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    allowed: false,\n    attemptsRemaining: 5,\n+   debug: {\n+     email: undefined\n+   },\n    message: 'Missing fields: partnerEntitlement. Retry with correct data through the authorized partner verification flow.',\n    missingFields: [\n      'partnerEntitlement'\n    ],\n    reason: 'partner_status_unknown',\n"
+      },
+      {
+        "name": "completed direct conversion ignores exhausted partner allowance",
+        "passes": true
+      },
+      {
+        "name": "direct status authoritative regardless of partner evidence",
+        "passes": true
+      },
+      {
+        "name": "ownership and household errors do not allocate streams",
+        "passes": true
+      },
+      {
+        "name": "basic registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "basic independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "standard registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "standard independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "premium registration boundary, duplicate, invalid input, and foreign ownership",
+        "passes": true
+      },
+      {
+        "name": "premium independent stream cap and stop state",
+        "passes": true
+      },
+      {
+        "name": "stream counts isolated between accounts",
+        "passes": true
+      },
+      {
+        "name": "nested response may not disclose personal values",
+        "passes": false,
+        "error": "Response disclosed a forbidden value\n\ntrue !== false\n"
+      },
+      {
+        "name": "clock retry is safe and allowance unchanged",
+        "passes": true
+      },
+      {
+        "name": "restarts cannot consume explicit verification quota",
+        "passes": true
+      },
+      {
+        "name": "video boundary permits current video but denies the next after expiry",
+        "passes": true
+      },
+      {
+        "name": "household changes are bounded and require separately verified device rebinding",
+        "passes": true
+      }
+    ]
+  }
+]

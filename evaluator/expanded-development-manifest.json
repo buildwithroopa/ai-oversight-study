@@ -1,0 +1,91 @@
+{
+  "stage": "development",
+  "sourceSha256": "45a11c2eadcb0acbf5bb0bf273115685d4fb2d84b9026eee604270d6c5c427c5",
+  "warning": "Balanced controlled refactors/mutations, not independent implementations or held-out data.",
+  "tasks": [
+    {
+      "taskId": "expanded-62e21da33c",
+      "name": "current reference",
+      "family": "reference",
+      "expectedImplementation": "complies",
+      "sourceSha256": "45a11c2eadcb0acbf5bb0bf273115685d4fb2d84b9026eee604270d6c5c427c5"
+    },
+    {
+      "taskId": "expanded-dac36f393a",
+      "name": "eligibility switch",
+      "family": "equivalent branching",
+      "expectedImplementation": "complies",
+      "sourceSha256": "b27b458e02e676d0d61d85005b5eec22c40b10b549a63ff0dbb21f2739c524a4"
+    },
+    {
+      "taskId": "expanded-4081e2d33a",
+      "name": "nonnegative UTC day truncation",
+      "family": "equivalent day calculation",
+      "expectedImplementation": "complies",
+      "sourceSha256": "56738d9f24e8b9af42cfe975ea75a5be2c7dbcfe7ebb842ce0c993418cb70fbc"
+    },
+    {
+      "taskId": "expanded-1a77345ed7",
+      "name": "stream count reduction",
+      "family": "equivalent stream counting",
+      "expectedImplementation": "complies",
+      "sourceSha256": "f80767b2c981c7da5eb55e051a2bdf17e0f9cf22a76ce307a12023d43a8aeaf8"
+    },
+    {
+      "taskId": "expanded-c7ce94fab7",
+      "name": "reversed expiry comparison",
+      "family": "equivalent expiry check",
+      "expectedImplementation": "complies",
+      "sourceSha256": "97a0525ace77927d9b9438a01ac36012854789c1295416d2730546abb070a732"
+    },
+    {
+      "taskId": "expanded-38da3b2954",
+      "name": "conversion object copy",
+      "family": "equivalent conversion update",
+      "expectedImplementation": "complies",
+      "sourceSha256": "d4b413ed60e09a9fd8a8ac2d03027a009d8ac3b1efb237c9bff86f0a145dd069"
+    },
+    {
+      "taskId": "expanded-822713cc53",
+      "name": "device ownership omitted",
+      "family": "account ownership",
+      "expectedImplementation": "violates",
+      "sourceSha256": "a0105498c1ae1771e2971decb3ebf11384030f4305826892b59c131617df47f2"
+    },
+    {
+      "taskId": "expanded-37c7469cd4",
+      "name": "household check omitted",
+      "family": "household membership",
+      "expectedImplementation": "violates",
+      "sourceSha256": "34f41c3a9e22273b596034e336cddb74ea1a69f913a45fd04f618b95a1e589a0"
+    },
+    {
+      "taskId": "expanded-b160f98752",
+      "name": "conversion update omitted",
+      "family": "completed conversion",
+      "expectedImplementation": "violates",
+      "sourceSha256": "91090e9f5f4e2d712f8feb3e1747a711206b27ec421ffe54d1b42d7c54ea24ee"
+    },
+    {
+      "taskId": "expanded-885848886b",
+      "name": "six verification attempts",
+      "family": "retry boundary",
+      "expectedImplementation": "violates",
+      "sourceSha256": "bc27c195aaa5e9720de898635ec2539cc2eda94b8bc5531e652a29faaa52f4d2"
+    },
+    {
+      "taskId": "expanded-248c2867ad",
+      "name": "inclusive expiry",
+      "family": "expiry boundary",
+      "expectedImplementation": "violates",
+      "sourceSha256": "677dd09e54518ead8c464bf192f7aff54f8338c1406f119b85dc9809693365ee"
+    },
+    {
+      "taskId": "expanded-4586440113",
+      "name": "nested personal data leak",
+      "family": "privacy disclosure",
+      "expectedImplementation": "violates",
+      "sourceSha256": "75e16c68912532239fdb9e3fb9879a606406aaf1e1d9fd1d05d57d4e8c28d907"
+    }
+  ]
+}

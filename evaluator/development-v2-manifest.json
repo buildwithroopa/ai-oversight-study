@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "stage": "development",
+  "warning": "Evaluator-only labels derived from constructed candidates; not independently validated or held-out.",
+  "tasks": [
+    {
+      "taskId": "task-v2-7c21",
+      "acceptable": true,
+      "reason": "Reference under current development checks.",
+      "sourceSha256": "2f90c786ff22215489edc036657b0cbdec20a5cd1e035a24f2684817284a1f22",
+      "packetSha256": "46d03be506ac47afe929f3952fbdc99c98480aeb98b3db39a9be0cb9cd884ee2"
+    },
+    {
+      "taskId": "task-v2-b904",
+      "acceptable": false,
+      "reason": "Requires direct subscription for partner account.",
+      "sourceSha256": "6f2c9584b90481d2e7cdd71fd72a9c75be5c0749ecc380d58ce9c9b9889a39ad",
+      "packetSha256": "526a75e1f632ba79b9fd040a2a2c5bddcd80059f68454c78a59fa5a5e8a774d3"
+    },
+    {
+      "taskId": "task-v2-31ae",
+      "acceptable": false,
+      "reason": "Allows sixth verification attempt.",
+      "sourceSha256": "df4927e3921eb7d15b6acf0d56b6f8a5bf21702744d6a23f6bb90e74ca229ee8",
+      "packetSha256": "b43e2840bd87bf33d38fadf5898cdbb509d3234fac493971fff954e84f8962ba"
+    },
+    {
+      "taskId": "task-v2-f682",
+      "acceptable": false,
+      "reason": "Accepts exact expiry boundary.",
+      "sourceSha256": "849e73cd2bc526f17fc63cacc694977f7944d5a494b78ed16f472efaa126def1",
+      "packetSha256": "16206476c6ad7b90acccd15317fd6b0687f52adde4acdf4a9ac6563d2684b14b"
+    }
+  ]
+}

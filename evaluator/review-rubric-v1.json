@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "approvedDate": "2026-11-06",
+  "status": "policy-approved-development-rubric-not-yet-model-evaluated",
+  "implementationJudgment": ["complies", "violates", "uncertain"],
+  "evidenceJudgment": ["meaningful", "incomplete", "invalid"],
+  "nextAction": ["accept-bounded-task", "reject", "request-more-evidence"],
+  "rules": [
+    {
+      "id": "demonstrated-violation",
+      "when": "At least one concrete violation of an applicable frozen requirement is established",
+      "implementationJudgment": "violates",
+      "nextAction": "reject",
+      "evidenceRequired": ["requirement identifier or exact text", "relevant source or reproducible behavior", "expected and actual outcome"],
+      "privacySecurityPolicy": "Any demonstrated privacy or security violation requires rejection; other passing behavior cannot compensate."
+    },
+    {
+      "id": "insufficient-evidence",
+      "when": "No violation is demonstrated and material gaps leave compliance unestablished",
+      "implementationJudgment": "uncertain",
+      "nextAction": "request-more-evidence",
+      "note": "Weak or vacuous tests establish a test-quality problem, not automatically a code defect."
+    },
+    {
+      "id": "bounded-compliance",
+      "when": "Applicable requirements are supported by sufficient inspectable evidence and no unresolved material violation or gap remains",
+      "implementationJudgment": "complies",
+      "nextAction": "accept-bounded-task",
+      "note": "This is acceptance under the declared experimental scope, not production deployment approval."
+    }
+  ],
+  "constraints": [
+    "Security concerns must cite an applicable requirement and evidence; unsupported suspicion cannot be scored as an established violation.",
+    "Unresolved privacy or security concerns trigger request-more-evidence and prevent acceptance until resolved.",
+    "Nested debug fields are user-visible response data and cannot disclose forbidden personal values.",
+    "A valid alternative implementation is not a defect merely because its internal code differs.",
+    "Different requirements adopted later do not retroactively change earlier study labels.",
+    "Code compliance and the quality of supplied tests are scored separately; independent source or execution evidence may support compliance despite a weak individual test."
+  ],
+  "metrics": [
+    "false acceptance and false rejection against adjudicated implementation labels",
+    "uncertain and request-more-evidence counts reported separately",
+    "test-quality problem detection",
+    "unsupported violation claims",
+    "privacy or security violation detection"
+  ],
+  "scopeNote": "No production release gate, statistical performance claim, or independent label certification is established by this rubric."
+}

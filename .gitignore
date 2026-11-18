@@ -1,0 +1,14 @@
+node_modules/
+.npm-cache/
+.secrets/
+.env
+.env.*
+results/**/raw-*
+results/**/*.json
+results/**/*.log
+studies/**/model-input/
+studies/**/results/
+studies/**/evidence/*.json
+studies/**/evidence/*.log
+studies/**/freeze-manifest.json
+studies/**/evaluator/labels.json

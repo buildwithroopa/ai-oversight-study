@@ -1,0 +1,8 @@
+{
+  "name": "ai-oversight-study",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/budget.test.js test/clock-retry.test.js test/contracts.test.js test/expanded-cases.test.js test/packets.test.js test/playback.test.js test/privacy.test.js test/review-adjudication.test.js test/runs.test.js test/service.test.js test/structured-review.test.js test/validation.test.js test/video-household.test.js"
+  },
+  "dependencies": {}
+}
